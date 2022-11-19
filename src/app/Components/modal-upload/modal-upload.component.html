@@ -1,0 +1,42 @@
+<div class="modalcolor">
+  <form [formGroup]="form" (ngSubmit)="onSubmit(form)" class="form">
+    <mat-grid-list cols="4" gutterSize="10">
+      <mat-grid-tile [colspan]="2" [rowspan]="2" [style.background]="'green'">
+        <img (click)="ClickImage(data.Path)" src="{{ data.Path }}" alt=" " width="100%"/>
+        <input type="text" style="display:none" [ngModel]="data.Path" formControlName="ImagePath">
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'red'">
+        <mat-form-field appearance="fill">
+          <mat-label>Choose image type</mat-label>
+          <mat-select [ngModel]="data.ImageType" (ngModelChange)="data.ImageType" formControlName="ImageType">
+            <mat-option *ngFor="let type of ImageTypes" [value]="type">	{{type}}</mat-option>
+
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'yellow'">
+        <mat-form-field appearance="fill">
+          <mat-label>Choose image size</mat-label>
+          <mat-select [ngModel]="data.ImageSize" (ngModelChange)="data.ImageSize" formControlName="ImageSize">
+            <mat-option *ngFor="let size of ImageSizes" [value]="size">	{{size}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="2" [rowspan]="1" [style.background]="'cyan'">
+        <mat-form-field appearance="fill">
+          <mat-label>Image Name</mat-label>
+          <input matInput formControlName="Name" [ngModel]="data.Name">
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="4" [rowspan]="1" [style.background]="'blue'">
+        <div mat-dialog-actions>
+          <button mat-button   type="submit">Save Image</button>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </form>
+</div>

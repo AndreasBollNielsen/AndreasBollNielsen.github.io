@@ -1,37 +1,45 @@
-<h2>this is my fancy pwa app</h2>
-
-<mat-form-field>
-  <div>
-    <mat-toolbar>
-      <!-- Display files names -->
-      <input matInput [(ngModel)]="fileAttr" readonly name="name" />
-      <!-- Browse Button -->
-      <!-- <button mat-flat-button color="primary">Browse File</button> -->
-    </mat-toolbar>
-    <!-- Fetch selected filed on change -->
-    <input
-      type="file"
-      #fileInput
-      id="uploadFile"
-      (change)="uploadFileEvt($event)"
-      name="uploadFile"
-      multiple="true"
-
-      accept="image/*"
-    />
-  </div>
-</mat-form-field>
 
 
 
 
-  <!-- <img *ngIf="img" src={{img}} alt=" " width="256"/> -->
 
 
 
-<button (click)="openModal('')">Upload Image</button>
+<mat-grid-list cols="1" rowHeight="200px">
+  <!--Header-->
+  <mat-grid-tile>
+    <h2 class="text-center">Welcome to my fancy PWA image uploader</h2>
+  </mat-grid-tile>
+
+   <!--file upload-->
+  <mat-grid-tile>
+    <mat-form-field>
+      <div>
+        <mat-toolbar>
+          <input matInput [(ngModel)]="fileAttr" readonly name="name" />
+        </mat-toolbar>
+        <input
+          type="file"
+          #fileInput
+          id="uploadFile"
+          (change)="uploadFileEvt($event)"
+          name="uploadFile"
+          multiple="true"
+
+          accept="image/*"
+        />
+      </div>
+    </mat-form-field>
+  </mat-grid-tile>
+
+
+</mat-grid-list>
 
 <app-data-grid></app-data-grid>
+
+
+
+
 
 
 

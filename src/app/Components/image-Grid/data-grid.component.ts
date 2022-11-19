@@ -12,6 +12,8 @@ import { ModalUploadComponent } from '../modal-upload/modal-upload.component';
 })
 export class DataGridComponent implements OnInit {
   imageTiles: ImageModel[] = [];
+
+  //subscribe to changes to image list
   constructor(
     private datahandler: DataHandlerService,
     public dialog: MatDialog
@@ -30,6 +32,7 @@ export class DataGridComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  //open dialog for selected image
   RowDetails(rowElement: ImageModel, itemindex: number) {
     console.log(rowElement);
     const config = new MatDialogConfig();
@@ -39,13 +42,15 @@ export class DataGridComponent implements OnInit {
     config.data = rowElement;
 
     const MatDialogRef = this.dialog.open(ModalUploadComponent, config);
+
+    //send updated data to service after close event
     MatDialogRef.afterClosed().subscribe((data) => {
-    //  console.log('after edit: ', data);
+
       if (data != undefined) {
         this.datahandler.UpdateTile(data, itemindex);
       }
     });
   }
 
-  OpenImageInfo(index: number) {}
+
 }

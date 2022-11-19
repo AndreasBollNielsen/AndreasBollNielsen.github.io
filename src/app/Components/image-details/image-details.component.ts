@@ -11,7 +11,7 @@ export class ImageDetailsComponent implements OnInit {
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: ImageModel) {
 
-    console.log(this.data);
+
   }
 
   ngOnInit(): void {

@@ -1,12 +1,12 @@
 <div class="modalcolor">
   <form [formGroup]="form" (ngSubmit)="onSubmit(form)" class="form">
     <mat-grid-list cols="4" gutterSize="10">
-      <mat-grid-tile [colspan]="2" [rowspan]="2" [style.background]="'green'">
+      <mat-grid-tile class="roundedBorder" [colspan]="2" [rowspan]="2" style="background-color: rgb(58, 33, 42)">
         <img (click)="ClickImage(data.Path)" src="{{ data.Path }}" alt=" " width="100%"/>
         <input type="text" style="display:none" [ngModel]="data.Path" formControlName="ImagePath">
       </mat-grid-tile>
 
-      <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'red'">
+      <mat-grid-tile class="roundedBorder" [colspan]="1" [rowspan]="1" style="background-color: rgb(135, 76, 98)">
         <mat-form-field appearance="fill">
           <mat-label>Choose image type</mat-label>
           <mat-select [ngModel]="data.ImageType" (ngModelChange)="data.ImageType" formControlName="ImageType">
@@ -16,7 +16,7 @@
         </mat-form-field>
       </mat-grid-tile>
 
-      <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'yellow'">
+      <mat-grid-tile class="roundedBorder" [colspan]="1" [rowspan]="1" style="background-color: rgb(201, 132, 116)">
         <mat-form-field appearance="fill">
           <mat-label>Choose image size</mat-label>
           <mat-select [ngModel]="data.ImageSize" (ngModelChange)="data.ImageSize" formControlName="ImageSize">
@@ -25,16 +25,16 @@
         </mat-form-field>
       </mat-grid-tile>
 
-      <mat-grid-tile [colspan]="2" [rowspan]="1" [style.background]="'cyan'">
+      <mat-grid-tile class="roundedBorder" [colspan]="2" [rowspan]="1" style="background-color: rgb(242, 211, 136)">
         <mat-form-field appearance="fill">
           <mat-label>Image Name</mat-label>
-          <input matInput formControlName="Name" [ngModel]="data.Name">
+          <input matInput formControlName="Name" [ngModel]="data.Name" (ngModelChange)="data.Name">
         </mat-form-field>
       </mat-grid-tile>
 
-      <mat-grid-tile [colspan]="4" [rowspan]="1" [style.background]="'blue'">
+      <mat-grid-tile class="roundedBorder" [colspan]="4" [rowspan]="1" style="background-color: rgb(167, 210, 203)">
         <div mat-dialog-actions>
-          <button mat-button   type="submit">Save Image</button>
+          <button mat-raised-button    type="submit">Save Image</button>
         </div>
       </mat-grid-tile>
     </mat-grid-list>

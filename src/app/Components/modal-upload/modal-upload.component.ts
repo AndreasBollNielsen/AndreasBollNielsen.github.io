@@ -42,11 +42,14 @@ export class ModalUploadComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+
   onSubmit(formgroup: FormGroup) {
     this.dialogRef.close(formgroup.value);
     console.log(formgroup.value);
   }
 
+  //click event to open dialog box
   ClickImage(image: string) {
     console.log('image: ', image);
     const config = new MatDialogConfig();

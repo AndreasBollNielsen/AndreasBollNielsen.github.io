@@ -22,7 +22,7 @@ export class AppComponent {
   }
 
 
-//  @ViewChild('fileInput') fileInput: ElementRef;
+
   fileAttr = 'Choose File';
   uploadFileEvt(imgFile: any) {
     if (imgFile.target.files && imgFile.target.files[0]) {
@@ -30,34 +30,31 @@ export class AppComponent {
       Array.from(imgFile.target.files).forEach((file: any) => {
         this.fileAttr += file.name + ' - ';
       });
-      // HTML5 FileReader API
+
+      // read image
       let reader = new FileReader();
       reader.onload = (e: any) => {
         let image = new Image();
         image.src = e.target.result;
 
+        //get loaded image & open dialog box
         image.onload = (rs) => {
           let imgBase64Path = e.target.result;
           const imgFile = imgBase64Path;
-
           this.img = imgFile;
-
-        // console.log(imgFile);
-
           this.openModal(imgFile);
 
         };
       };
       reader.readAsDataURL(imgFile.target.files[0]);
       // Reset if duplicate image uploaded again
-      //this.fileInput.nativeElement.value = '';
     } else {
       this.fileAttr = 'Choose File';
     }
   }
 
 
-
+//open dialog box
     openModal(image: any)
     {
       const imagedata: ImageModel = {Path: image,Name: '',ImageType: '',ImageSize: ''};
@@ -71,10 +68,8 @@ export class AppComponent {
 
       const dialogRef = this.dialog.open(ModalUploadComponent, config);
       dialogRef.afterClosed().subscribe(data => {
-       // console.log(data);
-        const imagedata: ImageModel = {Path: data.ImagePath,Name: data.Name,ImageType: data.ImageType,ImageSize: data.Imagesize};
-        console.log(imagedata);
-          this.datahandler.UploadImage(imagedata);
+        const imagedata: ImageModel = {Path: data.ImagePath,Name: data.Name,ImageType: data.ImageType,ImageSize: data.ImageSize};
+        this.datahandler.UploadImage(imagedata);
       });
     }
 
